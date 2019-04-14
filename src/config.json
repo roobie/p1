@@ -1,0 +1,19 @@
+{
+  "mappings": [
+    {
+      "hostname": "authentication.host.lan",
+      "ipv4": "127.0.0.1",
+      "port": "10001"
+    },
+    {
+      "hostname": "authorization.host.lan",
+      "ipv4": "127.0.0.1",
+      "port": "10002"
+    },
+    {
+      "hostname": "accounting.host.lan",
+      "ipv4": "127.0.0.1",
+      "port": "10003"
+    }
+  ]
+}
