@@ -43,13 +43,5 @@ func main() {
 		}
 	})
 
-	http.HandleFunc("/log_in", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method != "POST" {
-			http.Error(w, "Invalid invocation", http.StatusMethodNotAllowed)
-			return
-		}
-		fmt.Fprintf(w, "Hi")
-	})
-
 	log.Fatal(http.ListenAndServe(port, nil))
 }
