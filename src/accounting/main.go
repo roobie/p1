@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	port := ":10001"
+	port := ":10003"
 	log.Printf("Starting server at %s", port)
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {

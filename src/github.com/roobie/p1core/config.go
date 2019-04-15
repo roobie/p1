@@ -1,30 +1,36 @@
-package p1core;
+package p1core
 
 import (
-  "log"
-  "os"
-  "io/ioutil"
-  "encoding/json"
+	"encoding/json"
+	"io/ioutil"
+	"log"
+	"os"
 )
 
 type Config struct {
-  Mappings []Mapping `json:"mappings"`
+	Mappings `json:"mappings"`
 }
 
-type Mapping struct {
-  Hostname string `json:"hostname"`
-  IPV4 string `json:"ipv4"`
-  Port string `json:"port"`
+type Mappings struct {
+	Authentication MappingItem `json:"authentication"`
+	Authorization  MappingItem `json:"authorization"`
+	Accounting     MappingItem `json:"accounting"`
 }
 
-func GetConfig() Config{
-  jsonFile, err := os.Open("../config.json")
-  if err != nil {
-    log.Fatal(err)
-  }
-  defer jsonFile.Close()
-  bytes, _ := ioutil.ReadAll(jsonFile)
-  var config Config
-  json.Unmarshal(bytes, &config)
-  return config
+type MappingItem struct {
+	Hostname string `json:"hostname"`
+	IPV4     string `json:"ipv4"`
+	Port     string `json:"port"`
+}
+
+func GetConfig() Config {
+	jsonFile, err := os.Open("config.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer jsonFile.Close()
+	bytes, _ := ioutil.ReadAll(jsonFile)
+	var config Config
+	json.Unmarshal(bytes, &config)
+	return config
 }
